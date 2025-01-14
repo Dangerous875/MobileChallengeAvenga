@@ -9,4 +9,8 @@ interface Repository {
     suspend fun getAllCountriesFromDb(): List<CountryModel>
 
     suspend fun insertAllCountries(countries: List<CountryEntity>)
+
+    suspend fun updateFavoriteCountry(country: CountryEntity)
+
+    suspend fun getCountryByID(id: Int): CountryModel
 }

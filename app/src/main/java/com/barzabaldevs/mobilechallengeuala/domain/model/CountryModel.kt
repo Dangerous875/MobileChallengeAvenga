@@ -7,13 +7,15 @@ data class CountryModel(
     val country: String,
     val name: String,
     val latitude: Double,
-    val longitude: Double
+    val longitude: Double,
+    val isFavorite : Boolean
 ) {
     fun toDataBase(): CountryEntity = CountryEntity(
         id = id,
         country = country,
         name = name,
         latitude = latitude,
-        longitude = longitude
+        longitude = longitude,
+        isFavorite = isFavorite
     )
 }

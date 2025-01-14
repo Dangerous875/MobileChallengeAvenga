@@ -15,12 +15,20 @@ import com.barzabaldevs.mobilechallengeuala.ui.screens.mainScreen.MainScreen
 @Composable
 fun NavigationWrapper() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = HomeScreenRoute) {
+    NavHost(navController = navController, startDestination = MainScreenRoute) {
         composable<HomeScreenRoute> { HomeScreen() }
-        composable<MainScreenRoute> { MainScreen() }
+        composable<MainScreenRoute> {
+            MainScreen(navigateToDetailScreen = {
+                navController.navigate(
+                    DetailScreenRoute(it.id)
+                )
+            })
+        }
         composable<DetailScreenRoute> {
             val safeArgs = it.toRoute<DetailScreenRoute>()
-            DetailScreen(id = safeArgs.id)
+            DetailScreen(id = safeArgs.id, navigateBack = {
+                navController.popBackStack()
+            })
         }
     }
-}
+    }

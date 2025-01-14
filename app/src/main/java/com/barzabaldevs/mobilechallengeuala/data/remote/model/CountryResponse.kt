@@ -7,13 +7,15 @@ data class CountryResponse(
     @SerializedName("_id") val id: Int,
     val country: String,
     val name: String,
-    @SerializedName("coord") val location: LocationCountry
+    @SerializedName("coord") val location: LocationCountry,
+    val isFavorite: Boolean = false
 ) {
     fun toDomain(): CountryModel = CountryModel(
         id = id,
         country = country,
         name = name,
         latitude = location.latitude,
-        longitude = location.longitude
+        longitude = location.longitude,
+        isFavorite = isFavorite
     )
 }

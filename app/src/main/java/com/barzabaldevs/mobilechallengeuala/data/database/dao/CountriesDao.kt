@@ -14,4 +14,10 @@ interface CountriesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllCountries(countries: List<CountryEntity>)
+
+    @Query("UPDATE countriestable SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun setFavoriteCountry(id: Int, isFavorite: Boolean)
+
+    @Query("SELECT * FROM countriestable WHERE id = :id")
+    suspend fun searchCountryByID(id: Int): CountryEntity
 }

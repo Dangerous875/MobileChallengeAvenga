@@ -16,13 +16,16 @@ data class CountryEntity(
     @ColumnInfo(name = "latitude")
     val latitude: Double,
     @ColumnInfo(name = "longitude")
-    val longitude: Double
+    val longitude: Double,
+    @ColumnInfo(name = "isFavorite")
+    val isFavorite: Boolean
 ) {
     fun toDomain() = CountryModel(
         id = id,
         country = country,
         name = name,
         latitude = latitude,
-        longitude = longitude
+        longitude = longitude,
+        isFavorite = isFavorite
     )
 }
