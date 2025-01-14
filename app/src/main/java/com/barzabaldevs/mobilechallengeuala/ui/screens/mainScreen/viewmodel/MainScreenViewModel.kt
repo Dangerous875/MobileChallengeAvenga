@@ -59,5 +59,17 @@ class MainScreenViewModel @Inject constructor(
         }
     }
 
+    fun onFilterFavoriteCountriesChange(value: Boolean) {
+        _mainState.update { state ->
+            state.copy(
+                filterCountries = if (value) {
+                    state.countries.filter { it.isFavorite }
+                } else {
+                    state.countries
+                }
+            )
+        }
+    }
+
 
 }
