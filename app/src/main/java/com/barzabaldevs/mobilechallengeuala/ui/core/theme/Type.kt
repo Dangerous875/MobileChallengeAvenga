@@ -1,4 +1,4 @@
-package com.barzabaldevs.mobilechallengeuala.ui.theme
+package com.barzabaldevs.mobilechallengeuala.ui.core.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.barzabaldevs.mobilechallengeuala.ui.theme
+package com.barzabaldevs.mobilechallengeuala.ui.core.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
