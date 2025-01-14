@@ -12,4 +12,11 @@ sealed class NavigationRoutes {
 
     @Serializable
     data class DetailScreenRoute(val id: Int) : NavigationRoutes()
+
+    @Serializable
+    data class MapScreenPortraitRoute(
+        val name: String,
+        val latitude: Double,
+        val longitude: Double
+    ) : NavigationRoutes()
 }

@@ -5,12 +5,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.barzabaldevs.mobilechallengeuala.ui.core.navigation.NavigationRoutes.DetailScreenRoute
-import com.barzabaldevs.mobilechallengeuala.ui.core.navigation.NavigationRoutes.HomeScreenRoute
-import com.barzabaldevs.mobilechallengeuala.ui.core.navigation.NavigationRoutes.MainScreenRoute
+import com.barzabaldevs.mobilechallengeuala.ui.core.navigation.NavigationRoutes.*
 import com.barzabaldevs.mobilechallengeuala.ui.screens.detailScreen.DetailScreen
 import com.barzabaldevs.mobilechallengeuala.ui.screens.homeScreen.HomeScreen
 import com.barzabaldevs.mobilechallengeuala.ui.screens.mainScreen.MainScreen
+import com.barzabaldevs.mobilechallengeuala.ui.screens.mapScreenPortrait.MapScreenPortrait
 
 @Composable
 fun NavigationWrapper() {
@@ -18,7 +17,15 @@ fun NavigationWrapper() {
     NavHost(navController = navController, startDestination = MainScreenRoute) {
         composable<HomeScreenRoute> { HomeScreen() }
         composable<MainScreenRoute> {
-            MainScreen(navigateToDetailScreen = {
+            MainScreen(navigateMapScreen = {
+                navController.navigate(
+                    MapScreenPortraitRoute(
+                        it.name,
+                        it.latitude,
+                        it.longitude
+                    )
+                )
+            }, navigateToDetailScreen = {
                 navController.navigate(
                     DetailScreenRoute(it.id)
                 )
@@ -30,5 +37,14 @@ fun NavigationWrapper() {
                 navController.popBackStack()
             })
         }
+
+        composable<MapScreenPortraitRoute> {
+            val safeArgs = it.toRoute<MapScreenPortraitRoute>()
+            MapScreenPortrait(
+                safeArgs.name,
+                safeArgs.latitude,
+                safeArgs.longitude,
+                backToMainScreen = { navController.popBackStack() })
+        }
     }
-    }
+}

@@ -23,6 +23,8 @@ class MainScreenViewModel @Inject constructor(
 
     private val _mainState = MutableStateFlow(MainScreenState())
     val mainState = _mainState.asStateFlow()
+    private val _currentCoordinates = MutableStateFlow(Pair(0.0, 0.0))
+    val currentCoordinates = _currentCoordinates.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -69,6 +71,10 @@ class MainScreenViewModel @Inject constructor(
                 }
             )
         }
+    }
+
+    fun updateCoordinates(latitude: Double, longitude: Double) {
+        _currentCoordinates.update { Pair(latitude, longitude) }
     }
 
 
