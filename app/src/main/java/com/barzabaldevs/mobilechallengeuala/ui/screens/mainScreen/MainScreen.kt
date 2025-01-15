@@ -11,7 +11,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.barzabaldevs.mobilechallengeuala.domain.model.CountryModel
 import com.barzabaldevs.mobilechallengeuala.ui.components.CardViewCountry
+import com.barzabaldevs.mobilechallengeuala.ui.components.CircularProgressBar
 import com.barzabaldevs.mobilechallengeuala.ui.components.CountryMapView
 import com.barzabaldevs.mobilechallengeuala.ui.components.SearchCountry
 import com.barzabaldevs.mobilechallengeuala.ui.components.isScreenInPortrait
@@ -46,7 +46,7 @@ fun MainScreen(
     val currentCoordinates by viewModel.currentCoordinates.collectAsState()
 
     if (mainScreenState.isLoading) {
-        CircularProgressIndicator()
+        CircularProgressBar()
     } else {
         if (isPortrait) {
             Column(

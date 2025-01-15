@@ -14,8 +14,14 @@ import com.barzabaldevs.mobilechallengeuala.ui.screens.mapScreenPortrait.MapScre
 @Composable
 fun NavigationWrapper() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = MainScreenRoute) {
-        composable<HomeScreenRoute> { HomeScreen() }
+    NavHost(navController = navController, startDestination = HomeScreenRoute) {
+        composable<HomeScreenRoute> {
+            HomeScreen(navigateToMainScreen = {
+                navController.navigate(
+                    MainScreenRoute
+                )
+            })
+        }
         composable<MainScreenRoute> {
             MainScreen(navigateMapScreen = {
                 navController.navigate(

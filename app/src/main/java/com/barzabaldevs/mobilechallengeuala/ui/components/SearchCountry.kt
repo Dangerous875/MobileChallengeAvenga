@@ -11,6 +11,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -42,6 +43,7 @@ fun SearchCountry(
             Icon(
                 imageVector = Icons.Default.Search,
                 contentDescription = "Search Icon",
+                tint = Color.Black
             )
         },
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -54,6 +56,6 @@ fun SearchCountry(
             },
         ),
         singleLine = true,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
     )
 }
