@@ -24,7 +24,6 @@ class UpdateFavoriteCountryUseCaseTest {
 
     @Test
     fun `invoke updates the favorite status of a country`() = runBlocking {
-        // Arrange
         val mockCountryModel = CountryModel(
             id = 1,
             country = "Argentina",
@@ -35,10 +34,8 @@ class UpdateFavoriteCountryUseCaseTest {
         )
         val expectedEntity = mockCountryModel.toDataBase()
 
-        // Act
         updateFavoriteCountryUseCase(mockCountryModel)
 
-        // Assert
         coVerify(exactly = 1) { repository.updateFavoriteCountry(expectedEntity) }
     }
 }

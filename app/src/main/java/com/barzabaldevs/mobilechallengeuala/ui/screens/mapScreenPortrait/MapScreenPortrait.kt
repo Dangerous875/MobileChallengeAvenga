@@ -80,7 +80,7 @@ fun TopBar(tittle: String, backToMainScreen: () -> Unit) {
                 Text(
                     modifier = Modifier.clickable(
                         interactionSource = remember { MutableInteractionSource() },
-                        indication = null // Desactiva la sombra y ripple visual
+                        indication = null
                     ) { backToMainScreen() },
                     text = "Back",
                     color = ColorPalette.primaryText,

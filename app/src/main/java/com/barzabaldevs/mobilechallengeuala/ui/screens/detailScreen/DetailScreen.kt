@@ -141,7 +141,7 @@ fun TopBarDetailScreen(name: String, navigateBack: () -> Unit) {
                 Text(
                     modifier = Modifier.clickable(
                         interactionSource = remember { MutableInteractionSource() },
-                        indication = null // Desactiva la sombra y ripple visual
+                        indication = null
                     ) { navigateBack() },
                     text = "Back",
                     color = ColorPalette.primaryText,
