@@ -131,7 +131,7 @@ fun ContentViewHome(navigateToMainScreen: () -> Unit) {
             )
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(
             onClick = navigateToMainScreen,
@@ -141,7 +141,7 @@ fun ContentViewHome(navigateToMainScreen: () -> Unit) {
             ),
             modifier = Modifier.fillMaxWidth(0.5f)
         ) {
-            Text(text = "Enter Challenge", fontSize = 20.sp, fontStyle = FontStyle.Italic)
+            Text(text = "Enter Challenge", fontSize = 16.sp, fontStyle = FontStyle.Italic)
         }
     }
 }

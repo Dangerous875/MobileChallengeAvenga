@@ -2,6 +2,7 @@ package com.barzabaldevs.mobilechallengeuala.ui.screens.mainScreen.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.barzabaldevs.mobilechallengeuala.di.NetworkUtils
 import com.barzabaldevs.mobilechallengeuala.domain.model.CountryModel
 import com.barzabaldevs.mobilechallengeuala.domain.usecases.GetAllCountriesFromApiUseCase
 import com.barzabaldevs.mobilechallengeuala.domain.usecases.UpdateFavoriteCountryUseCase
@@ -17,23 +18,28 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(
-    getAllCountriesFromApiUseCase: GetAllCountriesFromApiUseCase,
-    private val updateFavoriteCountryUseCase: UpdateFavoriteCountryUseCase
+    private val getAllCountriesFromApiUseCase: GetAllCountriesFromApiUseCase,
+    private val updateFavoriteCountryInBDUseCase: UpdateFavoriteCountryUseCase,
+    networkUtils: NetworkUtils
 ) :
     ViewModel() {
 
     private val _mainState = MutableStateFlow(MainScreenState())
     val mainState = _mainState.asStateFlow()
+    private val _isInternetAvailable = MutableStateFlow(networkUtils.isInternetAvailable())
+    val isInternetAvailable = _isInternetAvailable.asStateFlow()
     private val _currentCoordinates = MutableStateFlow(Pair(0.0, 0.0))
     val currentCoordinates = _currentCoordinates.asStateFlow()
 
     init {
+        initCountries()
+    }
+
+    private fun initCountries() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.IO) {
                 val countries = getAllCountriesFromApiUseCase()
-                if (countries.isNotEmpty()) {
-                    _mainState.update { it.copy(isLoading = false, countries = countries) }
-                }
+                _mainState.update { it.copy(isLoading = false, countries = countries) }
             }
         }
     }
@@ -54,7 +60,7 @@ class MainScreenViewModel @Inject constructor(
         }
 
         viewModelScope.launch(Dispatchers.IO) {
-            updateFavoriteCountryUseCase(country)
+            updateFavoriteCountryInBDUseCase(country)
         }
     }
 
@@ -78,6 +84,11 @@ class MainScreenViewModel @Inject constructor(
 
     fun updateCoordinates(latitude: Double, longitude: Double) {
         _currentCoordinates.update { Pair(latitude, longitude) }
+    }
+
+    fun tryAgain() {
+        _mainState.update { it.copy(isLoading = true) }
+        initCountries()
     }
 
 

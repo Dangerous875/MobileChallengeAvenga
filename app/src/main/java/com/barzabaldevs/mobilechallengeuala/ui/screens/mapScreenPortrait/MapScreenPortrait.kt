@@ -1,5 +1,7 @@
 package com.barzabaldevs.mobilechallengeuala.ui.screens.mapScreenPortrait
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,11 +17,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.barzabaldevs.mobilechallengeuala.ui.components.CountryMapView
+import com.barzabaldevs.mobilechallengeuala.ui.core.colors.ColorPalette
 
 @Composable
 fun MapScreenPortrait(
@@ -52,24 +57,33 @@ fun TopBar(tittle: String, backToMainScreen: () -> Unit) {
             Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                 Text(
                     text = tittle,
-                    color = Color.White,
-                    fontSize = 24.sp
+                    color = ColorPalette.primaryText,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(horizontal = 8.dp)
                 )
             }
         },
-        colors = TopAppBarDefaults.topAppBarColors(Color.DarkGray),
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = ColorPalette.primary,
+            titleContentColor = ColorPalette.primaryText
+        ),
         navigationIcon = {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = { backToMainScreen() }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Outlined.ArrowBack,
                         contentDescription = null,
-                        tint = Color.White
+                        tint = ColorPalette.icon
                     )
                 }
                 Text(
+                    modifier = Modifier.clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null // Desactiva la sombra y ripple visual
+                    ) { backToMainScreen() },
                     text = "Back",
-                    color = Color.White,
+                    color = ColorPalette.primaryText,
                     fontSize = 20.sp
                 )
             }
