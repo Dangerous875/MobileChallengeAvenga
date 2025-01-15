@@ -84,5 +84,9 @@ dependencies {
     implementation(libs.maps.compose)
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
+    // Coroutines y Mockk
+    implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
 }

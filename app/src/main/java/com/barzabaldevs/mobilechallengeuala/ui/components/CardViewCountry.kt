@@ -73,7 +73,9 @@ fun CardViewCountry(
                     )
                 }
 
-                IconButton(onClick = { onClickFavorite(country) }) {
+                IconButton(onClick = {
+                    onClickFavorite(country)
+                }) {
                     Icon(
                         imageVector = if (country.isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                         contentDescription = "Favorite Icon",

@@ -22,6 +22,8 @@ mapsCompose = "1.0.0"
 playServicesMaps = "19.0.0"
 location = "21.3.0"
 mockkVersion = "1.12.2"
+coroutinesVersion = "1.8.1"
+turbine = "0.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,6 +56,9 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockkVersion" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesVersion" }
+kotlinx-coroutines-test= { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesVersion" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 maps-compose = { module = "com.google.maps.android:maps-compose", version.ref = "mapsCompose" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 play-services-location = {module = "com.google.android.gms:play-services-location" , version.ref = "location" }

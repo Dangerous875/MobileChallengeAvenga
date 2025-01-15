@@ -64,7 +64,7 @@ class MainScreenViewModel @Inject constructor(
         }
     }
 
-    private fun applyFilter(countries: List<CountryModel>, query: String): List<CountryModel> {
+    fun applyFilter(countries: List<CountryModel>, query: String): List<CountryModel> {
         return countries.filter { country ->
             country.name.replace("'", "").startsWith(query, ignoreCase = true)
         }
