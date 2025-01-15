@@ -1,3 +1,8 @@
+# Challenge document.
+- :file_folder: **Mobile Challenge Android File**:
+
+  [Mobile Challenge - v0.5.pdf](https://drive.google.com/file/d/1thT8OpsnL7-wxQGe6QS3XG3VIH3Qd8yj/view?usp=sharing)
+
 #  Mobile challenge Avenga: Focus, Search and Visualization of Countries.
 > [!NOTE]
 >  This project uses a robust architecture based on Clean Architecture and the MVVM pattern, integrating technologies such as Retrofit, Dagger Hilt, Room, Coil, Jetpack Compose and Kotlin Serialization 2.8.0 for secure navigation arguments. The main screen, MainScreen, is the heart of the application, allowing the display and search of more than 200,000 countries. The application follows an offline-first approach, ensuring functionality even without an internet connection.
