@@ -37,12 +37,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.barzabaldevs.mobilechallengeuala.R
+import com.barzabaldevs.mobilechallengeuala.ui.components.isScreenInPortrait
 import com.barzabaldevs.mobilechallengeuala.ui.core.colors.ColorPalette
 
 @Composable
 fun HomeScreen(navigateToMainScreen: () -> Unit) {
     val activity = LocalContext.current as Activity
-
+    val isPortrait = isScreenInPortrait()
     Scaffold(
         topBar = {
             TopBarHome(
@@ -57,7 +58,7 @@ fun HomeScreen(navigateToMainScreen: () -> Unit) {
                     .padding(paddingValues)
                     .background(ColorPalette.background)
             ) {
-                ContentViewHome(navigateToMainScreen)
+                ContentViewHome(navigateToMainScreen, isPortrait)
             }
         }
     )
@@ -93,7 +94,7 @@ fun TopBarHome(title: String, activity: Activity) {
 }
 
 @Composable
-fun ContentViewHome(navigateToMainScreen: () -> Unit) {
+fun ContentViewHome(navigateToMainScreen: () -> Unit, isPortrait: Boolean) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -103,10 +104,10 @@ fun ContentViewHome(navigateToMainScreen: () -> Unit) {
     ) {
         AsyncImage(
             modifier = Modifier
-                .size(350.dp)
+                .size(if (isPortrait) 350.dp else 100.dp)
                 .clip(CircleShape)
                 .border(4.dp, ColorPalette.primary, CircleShape)
-                .padding(36.dp),
+                .padding(if (isPortrait) 36.dp else 12.dp),
             model = R.drawable.iv_uala,
             contentDescription = "Logo",
             contentScale = ContentScale.Crop

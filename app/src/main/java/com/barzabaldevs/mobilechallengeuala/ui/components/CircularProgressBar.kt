@@ -34,6 +34,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun CircularProgressBar() {
     var dotCount by remember { mutableIntStateOf(0) }
+    val isPortrait = isScreenInPortrait()
 
     LaunchedEffect(Unit) {
         while (true) {
@@ -51,10 +52,10 @@ fun CircularProgressBar() {
     ) {
         AsyncImage(
             modifier = Modifier
-                .size(250.dp)
+                .size(if (isPortrait) 250.dp else 100.dp)
                 .clip(CircleShape)
                 .border(4.dp, ColorPalette.primary, CircleShape)
-                .padding(36.dp),
+                .padding(if (isPortrait) 36.dp else 12.dp),
             model = R.drawable.iv_uala,
             contentDescription = "Logo",
             contentScale = ContentScale.Inside
